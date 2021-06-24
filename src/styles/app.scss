@@ -3,6 +3,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  font-family: "Lato", sans-serif;
+}
 h1,
 h2,
 h3 {
@@ -11,3 +14,10 @@ h3 {
 // we can import the partials like this in sass
 @import "./player";
 @import "./song";
+@import "./library";
+
+h3,
+h4 {
+  font-weight: 400;
+  color: rgb(100, 100, 100);
+}
