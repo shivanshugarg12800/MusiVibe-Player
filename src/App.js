@@ -11,6 +11,7 @@ import data from "./util";
 function App() {
   // state
   const [songs, setSongs] = useState(data());
+  // since it returns an array of the objects we set the current song as the first object from the array
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
 

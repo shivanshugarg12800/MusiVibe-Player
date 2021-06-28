@@ -1,3 +1,12 @@
+/*
+This file renders the player which is used to play/pause skip the current playing song
+1. using the font awesome icons
+2. using the current song to get the details of the current song playing
+3. using the useRef hook to make changes to the html tag which we could have otherwise called in via 
+   docuement model in plain javascript
+4. 
+*/
+
 import React, { useRef, useState } from "react";
 // useRef is used to grab the html elements by adding a reference to that
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -41,10 +50,11 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
 
   const dragHandler = (e) => {
     audioRef.current.currentTime = e.target.value;
+    // load the previous songsInfo and then set the currentTime
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
 
-  // -----------------------State-------------------------------
+  // -----------------------   STATES  -------------------------------
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,

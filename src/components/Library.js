@@ -1,3 +1,5 @@
+// this component renders all the songs present in the util.js
+
 import React from "react";
 import LibrarySong from "./LibrarySong";
 
@@ -11,8 +13,6 @@ const Library = ({ songs, setCurrentSong }) => {
             songs={songs}
             setCurrentSong={setCurrentSong}
             song={song}
-            id={song.id}
-            key={song.id}
           />
         ))}
       </div>

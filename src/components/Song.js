@@ -1,4 +1,7 @@
+// this is the component which contains the current playing song's information like name cover image
+// author
 import React from "react";
+// getting the current playing song
 const Song = ({ currentSong }) => {
   return (
     <div className="song-container">
