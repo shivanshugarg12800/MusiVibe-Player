@@ -7,7 +7,7 @@ This file renders the player which is used to play/pause skip the current playin
 4. 
 */
 
-import React, { useRef, useState } from "react";
+import React from "react";
 // useRef is used to grab the html elements by adding a reference to that
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,10 +16,14 @@ import {
   faAngleLeft,
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
-const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
-  // ------------------refrences----------------------
-  const audioRef = useRef(null);
-
+const Player = ({
+  audioRef,
+  currentSong,
+  isPlaying,
+  setIsPlaying,
+  songInfo,
+  setSongInfo,
+}) => {
   //--------------------- Event handlers-------------------------
   const songPlayHandler = () => {
     if (isPlaying) {
@@ -38,15 +42,6 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
     seconds = seconds >= 10 ? seconds : "0" + seconds;
     return minutes + ":" + seconds;
   };
-  const timeHandler = (e) => {
-    const currentTime = e.target.currentTime;
-    const duration = e.target.duration;
-    setSongInfo({
-      ...songInfo,
-      currentTime,
-      duration,
-    });
-  };
 
   const dragHandler = (e) => {
     audioRef.current.currentTime = e.target.value;
@@ -54,11 +49,6 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
 
-  // -----------------------   STATES  -------------------------------
-  const [songInfo, setSongInfo] = useState({
-    currentTime: 0,
-    duration: 0,
-  });
   return (
     <div className="player">
       <div className="time-control">
@@ -87,12 +77,6 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
           icon={faAngleRight}
         />
       </div>
-      <audio
-        onLoadedMetadata={timeHandler}
-        onTimeUpdate={timeHandler}
-        ref={audioRef}
-        src={currentSong.audio}
-      ></audio>
     </div>
   );
 };

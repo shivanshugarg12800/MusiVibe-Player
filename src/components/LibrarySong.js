@@ -1,10 +1,11 @@
 import React from "react";
-const LibrarySong = ({ song, songs, setCurrentSong, id }) => {
+const LibrarySong = ({ audioRef, song, songs, setCurrentSong, id }) => {
   // Event Handlers-------------------------
   const songChangeHandler = (e) => {
     // const selectedSong = songs.filter((state) => state.id === id);
     // console.log(e.target);
     setCurrentSong(song);
+    audioRef.current.play();
   };
 
   return (
