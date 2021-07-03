@@ -10,12 +10,12 @@ import Library from "./components/Library";
 import Nav from "./components/Nav";
 import data from "./util";
 function App() {
-  // ------------------refrences----------------------
+  // ----------------------REFERENCES-------------------------
   const audioRef = useRef(null);
 
-  // state
-  const [songs, setSongs] = useState(data());
+  // -------------------------STATES------------------------------
   // since it returns an array of the objects we set the current song as the first object from the array
+  const [songs, setSongs] = useState(data());
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [songInfo, setSongInfo] = useState({
@@ -46,6 +46,8 @@ function App() {
         currentSong={currentSong}
         songInfo={songInfo}
         setSongInfo={setSongInfo}
+        songs={songs}
+        setCurrentSong={setCurrentSong}
       />
       <Library
         songs={songs}
