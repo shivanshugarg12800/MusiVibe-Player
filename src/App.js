@@ -8,7 +8,7 @@ import Song from "./components/Song";
 import Player from "./components/Player";
 import Library from "./components/Library";
 import Nav from "./components/Nav";
-import data from "./util";
+import data from "./data";
 function App() {
   // ----------------------REFERENCES-------------------------
   const audioRef = useRef(null);
@@ -21,6 +21,7 @@ function App() {
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
+    animationPercentage: 0,
   });
   const [libraryStatus, setLibraryStatus] = useState(false);
 
@@ -28,10 +29,16 @@ function App() {
   const timeHandler = (e) => {
     const currentTime = e.target.currentTime;
     const duration = e.target.duration;
+    const roundedTime = Math.round(currentTime);
+    const roundedDuration = Math.round(duration);
+    const animationPercentage = Math.round(
+      (roundedTime / roundedDuration) * 100
+    );
     setSongInfo({
       ...songInfo,
       currentTime,
       duration,
+      animationPercentage,
     });
   };
 
@@ -47,6 +54,7 @@ function App() {
         songInfo={songInfo}
         setSongInfo={setSongInfo}
         songs={songs}
+        setSongs={setSongs}
         setCurrentSong={setCurrentSong}
       />
       <Library

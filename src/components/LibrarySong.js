@@ -1,4 +1,5 @@
 import React from "react";
+import { playAudio } from "../util";
 const LibrarySong = ({
   audioRef,
   song,
@@ -30,14 +31,7 @@ const LibrarySong = ({
     setSongs(newSong);
     //check if the song is playing or not
     //if not then it waits till the song loads and it plays
-    if (isPlaying) {
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.then((audio) => {
-          audioRef.current.play();
-        });
-      }
-    }
+    playAudio(isPlaying, audioRef);
   };
 
   return (

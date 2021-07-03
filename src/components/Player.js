@@ -7,7 +7,8 @@ This file renders the player which is used to play/pause skip the current playin
 4. 
 */
 
-import React from "react";
+import React, { useEffect } from "react";
+import { playAudio } from "../util";
 // useRef is used to grab the html elements by adding a reference to that
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -24,8 +25,27 @@ const Player = ({
   setIsPlaying,
   songInfo,
   songs,
+  setSongs,
   setSongInfo,
 }) => {
+  //------------------USE EFFECTS----------------------------
+  useEffect(() => {
+    const newSong = songs.map((song) => {
+      if (song.id === currentSong.id) {
+        return {
+          ...song,
+          active: true,
+        };
+      } else {
+        return {
+          ...song,
+          active: false,
+        };
+      }
+    });
+    setSongs(newSong);
+  }, [currentSong]);
+
   //--------------------- Event handlers-------------------------
   const songPlayHandler = () => {
     if (isPlaying) {
@@ -52,41 +72,44 @@ const Player = ({
   };
 
   const skipTrackHandler = (direction) => {
-    // console.log(currentSong);
-    // console.log(songs.length);
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
-    // console.log(currentIndex);
+    let n = songs.length;
     if (direction === "back") {
-      if (currentIndex === 0) {
-        const newSong = songs[songs.length - 1];
-        setCurrentSong(newSong);
-      } else {
-        const newSong = songs[currentIndex - 1];
-        setCurrentSong(newSong);
-      }
+      setCurrentSong(
+        currentIndex === 0 ? songs[n - 1] : songs[currentIndex - 1]
+      );
     } else {
-      if (currentIndex === songs.length - 1) {
-        const newSong = songs[0];
-        setCurrentSong(newSong);
-      } else {
-        const newSong = songs[currentIndex + 1];
-        setCurrentSong(newSong);
-      }
+      setCurrentSong(
+        currentIndex === n - 1 ? songs[0] : songs[currentIndex + 1]
+      );
     }
+    playAudio(isPlaying, audioRef);
+  };
+
+  const trackAnimation = {
+    transform: `translateX(${songInfo.animationPercentage}%)`,
   };
 
   return (
     <div className="player">
       <div className="time-control">
         <p>{formatTime(songInfo.currentTime)}</p>
-        <input
-          min={0}
-          max={songInfo.duration || 0}
-          value={songInfo.currentTime}
-          onChange={dragHandler}
-          type="range"
-        />
-        <p>{formatTime(songInfo.duration)}</p>
+        <div
+          style={{
+            background: `linear-gradient( to right, ${currentSong.color[0]},${currentSong.color[1]})`,
+          }}
+          className="track"
+        >
+          <input
+            min={0}
+            max={songInfo.duration || 0}
+            value={songInfo.currentTime}
+            onChange={dragHandler}
+            type="range"
+          />
+          <div style={trackAnimation} className="track-animation"></div>
+        </div>
+        <p>{songInfo.duration ? formatTime(songInfo.duration) : "0:00"}</p>
       </div>
       <div className="play-control">
         {/* icon is a prop that is passed on to the component FontAwesomeIcon */}
