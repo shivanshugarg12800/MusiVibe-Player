@@ -11,6 +11,13 @@ h2,
 h3 {
   color: rgb(56, 55, 55);
 }
+.App {
+  transition: all 0.5s ease;
+}
+.library-active {
+  margin-left: 20%;
+}
+
 // we can import the partials like this in sass
 @import "./player";
 @import "./song";

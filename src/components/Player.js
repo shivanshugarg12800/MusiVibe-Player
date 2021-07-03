@@ -8,7 +8,6 @@ This file renders the player which is used to play/pause skip the current playin
 */
 
 import React, { useEffect } from "react";
-import { playAudio } from "../util";
 // useRef is used to grab the html elements by adding a reference to that
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -71,19 +70,19 @@ const Player = ({
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
 
-  const skipTrackHandler = (direction) => {
+  const skipTrackHandler = async (direction) => {
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     let n = songs.length;
     if (direction === "back") {
-      setCurrentSong(
+      await setCurrentSong(
         currentIndex === 0 ? songs[n - 1] : songs[currentIndex - 1]
       );
     } else {
-      setCurrentSong(
+      await setCurrentSong(
         currentIndex === n - 1 ? songs[0] : songs[currentIndex + 1]
       );
     }
-    playAudio(isPlaying, audioRef);
+    if (isPlaying) audioRef.current.play();
   };
 
   const trackAnimation = {

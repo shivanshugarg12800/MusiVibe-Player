@@ -4,6 +4,7 @@
   left: 0;
   width: 20rem;
   height: 100%;
+  background-color: rgb(255, 255, 255);
   box-shadow: 2px 2px 50px rgb(206, 205, 205);
   overflow: scroll;
   h2 {
@@ -19,6 +20,7 @@
   align-items: center;
   padding: 1rem 2rem 1rem 2rem;
   cursor: pointer;
+  transition: background 0.4s ease;
   img {
     width: 30%;
     border-radius: 50%;
@@ -59,4 +61,10 @@
 .library-status {
   transform: translateX(0%);
   opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .library {
+    width: 100%;
+  }
 }
