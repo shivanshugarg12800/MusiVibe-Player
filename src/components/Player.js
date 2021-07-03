@@ -7,7 +7,7 @@ This file renders the player which is used to play/pause skip the current playin
 4. 
 */
 
-import React, { useEffect } from "react";
+import React from "react";
 // useRef is used to grab the html elements by adding a reference to that
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -27,10 +27,10 @@ const Player = ({
   setSongs,
   setSongInfo,
 }) => {
-  //------------------USE EFFECTS----------------------------
-  useEffect(() => {
+  // this function checks if the song is loaded in the dom or not and if not it waits for it to load
+  const activeLibraryHandler = (nextPrev) => {
     const newSong = songs.map((song) => {
-      if (song.id === currentSong.id) {
+      if (song.id === nextPrev.id) {
         return {
           ...song,
           active: true,
@@ -43,8 +43,7 @@ const Player = ({
       }
     });
     setSongs(newSong);
-  }, [currentSong]);
-
+  };
   //--------------------- Event handlers-------------------------
   const songPlayHandler = () => {
     if (isPlaying) {
@@ -63,13 +62,13 @@ const Player = ({
     seconds = seconds >= 10 ? seconds : "0" + seconds;
     return minutes + ":" + seconds;
   };
-
+  // this function if for the drag event of the input
   const dragHandler = (e) => {
     audioRef.current.currentTime = e.target.value;
     // load the previous songsInfo and then set the currentTime
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
-
+  // this is the function to check the forward and the back button in the player
   const skipTrackHandler = async (direction) => {
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     let n = songs.length;
@@ -77,8 +76,14 @@ const Player = ({
       await setCurrentSong(
         currentIndex === 0 ? songs[n - 1] : songs[currentIndex - 1]
       );
+      activeLibraryHandler(
+        currentIndex === 0 ? songs[n - 1] : songs[currentIndex - 1]
+      );
     } else {
       await setCurrentSong(
+        currentIndex === n - 1 ? songs[0] : songs[currentIndex + 1]
+      );
+      activeLibraryHandler(
         currentIndex === n - 1 ? songs[0] : songs[currentIndex + 1]
       );
     }
