@@ -1,8 +1,11 @@
 import React from "react";
-const Bubble = ({ isPlaying }) => {
+const Bubble = ({ isPlaying, libraryStatus }) => {
   return (
     <div>
-      <div className={`bubbles ${isPlaying ? `showBubble` : "hideBubble"}`}>
+      <div
+        className={`bubbles ${isPlaying ? `showBubble` : "hideBubble"}  
+         ${libraryStatus ? `shrinkDiv` : ""}`}
+      >
         <div className="bubble"></div>
         <div className="bubble"></div>
         <div className="bubble"></div>

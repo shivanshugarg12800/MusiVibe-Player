@@ -20,10 +20,13 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 }
 
 .showBubble {
-  display: block;
+  display: inherit;
 }
 .hideBubble {
   display: none;
+}
+.shrinkDiv {
+  width: 80%;
 }
 .bubble {
   position: absolute;
@@ -87,12 +90,10 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
     transform: translateX(-100%);
   }
 }
-
-@media screen and (max-width: 600px) {
-  .bubbles,
+@media screen and (max-width: 470px) {
   .bubble {
-    height: 90vh;
-    width: 50%;
-    overflow: hidden;
+    width: 10vw;
+    height: 8vh;
+    border-radius: 50%;
   }
 }
