@@ -5,6 +5,7 @@
 }
 body {
   font-family: "Lato", sans-serif;
+  background-color: #142850;
 }
 h1,
 h2,
@@ -23,6 +24,7 @@ h3 {
 @import "./song";
 @import "./library";
 @import "./nav";
+@import "./bubble";
 
 h3,
 h4 {

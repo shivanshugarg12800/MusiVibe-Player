@@ -119,19 +119,19 @@ const Player = ({
         {/* icon is a prop that is passed on to the component FontAwesomeIcon */}
         <FontAwesomeIcon
           onClick={() => skipTrackHandler("back")}
-          className="skip-back"
+          className="skip-back font-icons"
           size="2x"
           icon={faAngleLeft}
         />
         <FontAwesomeIcon
           onClick={songPlayHandler}
-          className="play"
+          className="play font-icons"
           size="2x"
           icon={isPlaying ? faPause : faPlay}
         />
         <FontAwesomeIcon
           onClick={() => skipTrackHandler("forward")}
-          className="skip-forward"
+          className="skip-forward font-icons"
           size="2x"
           icon={faAngleRight}
         />

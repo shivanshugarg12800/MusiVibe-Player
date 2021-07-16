@@ -4,11 +4,12 @@
   left: 0;
   width: 20rem;
   height: 100%;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 2px 2px 50px rgb(206, 205, 205);
+  background-color: #0f4c75;
+  box-shadow: 2px 2px 20px #28292b;
   overflow: scroll;
   h2 {
     padding: 2rem;
+    color: whitesmoke;
   }
   transform: translateX(-100%);
   transition: all 0.5s ease;
@@ -21,12 +22,16 @@
   padding: 1rem 2rem 1rem 2rem;
   cursor: pointer;
   transition: background 0.4s ease;
+  h3,
+  h4 {
+    color: whitesmoke;
+  }
   img {
     width: 30%;
     border-radius: 50%;
   }
   &:hover {
-    background: rgb(212, 245, 255);
+    background: #023252;
   }
 }
 .song-description {
@@ -50,13 +55,13 @@
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: rgba(155, 155, 155, 0.5);
+  background-color: rgb(231, 230, 230);
   border-radius: 20px;
   border: transparent;
 }
 
 .selected {
-  background: rgb(212, 245, 255);
+  background: #023252;
 }
 .library-status {
   transform: translateX(0%);

@@ -9,6 +9,7 @@ import Player from "./components/Player";
 import Library from "./components/Library";
 import Nav from "./components/Nav";
 import data from "./data";
+import Bubble from "./components/Bubble";
 function App() {
   // ----------------------REFERENCES-------------------------
   const audioRef = useRef(null);
@@ -53,6 +54,7 @@ function App() {
 
   return (
     <div className={`App ${libraryStatus ? `library-active` : ""}`}>
+      <Bubble isPlaying={isPlaying} />
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <Song currentSong={currentSong} />
       <Player
