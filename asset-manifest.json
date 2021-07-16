@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/MusiVibe-Player/static/css/main.59533d75.chunk.css",
-    "main.js": "/MusiVibe-Player/static/js/main.f1215363.chunk.js",
-    "main.js.map": "/MusiVibe-Player/static/js/main.f1215363.chunk.js.map",
+    "main.css": "/MusiVibe-Player/static/css/main.e99a7a40.chunk.css",
+    "main.js": "/MusiVibe-Player/static/js/main.ebff29e9.chunk.js",
+    "main.js.map": "/MusiVibe-Player/static/js/main.ebff29e9.chunk.js.map",
     "runtime-main.js": "/MusiVibe-Player/static/js/runtime-main.d19d5f09.js",
     "runtime-main.js.map": "/MusiVibe-Player/static/js/runtime-main.d19d5f09.js.map",
     "static/js/2.f9237ece.chunk.js": "/MusiVibe-Player/static/js/2.f9237ece.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.6f327ffc.chunk.js": "/MusiVibe-Player/static/js/3.6f327ffc.chunk.js",
     "static/js/3.6f327ffc.chunk.js.map": "/MusiVibe-Player/static/js/3.6f327ffc.chunk.js.map",
     "index.html": "/MusiVibe-Player/index.html",
-    "static/css/main.59533d75.chunk.css.map": "/MusiVibe-Player/static/css/main.59533d75.chunk.css.map",
+    "static/css/main.e99a7a40.chunk.css.map": "/MusiVibe-Player/static/css/main.e99a7a40.chunk.css.map",
     "static/js/2.f9237ece.chunk.js.LICENSE.txt": "/MusiVibe-Player/static/js/2.f9237ece.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d19d5f09.js",
     "static/js/2.f9237ece.chunk.js",
-    "static/css/main.59533d75.chunk.css",
-    "static/js/main.f1215363.chunk.js"
+    "static/css/main.e99a7a40.chunk.css",
+    "static/js/main.ebff29e9.chunk.js"
   ]
 }
