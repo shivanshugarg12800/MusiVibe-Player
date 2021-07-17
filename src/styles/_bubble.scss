@@ -20,10 +20,12 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 }
 
 .showBubble {
-  display: inherit;
+  opacity: 1;
+  transition: all 5s;
 }
 .hideBubble {
-  display: none;
+  opacity: 0;
+  transition: all 0.8s;
 }
 .shrinkDiv {
   width: 80%;
