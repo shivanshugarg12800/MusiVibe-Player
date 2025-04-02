@@ -4,7 +4,7 @@
 
 ### 📝ABOUT
 
-<b>MusiVibe</b> is a ReactJS based music player web application to play different set of musics.
+<b>MusiVibe</b> is a ReactJS based music player web application.
 
 #### 🔗 Link to the live project: [Click Here↗️](https://shivanshugarg12800.github.io/MusiVibe-Player/)
 
